@@ -83,6 +83,42 @@ $(document).ready(function () {
 
 });
 
+var ctx= document.getElementById("myChart").getContext("2d")
+
+var myChart= new Chart(ctx,{
+    type:"radar",
+    data:{
+        labels:['SP DEFENSE', 'SPEED', 'DEFENSE', 'SP ATTACK', 'ATTACK', 'HP'],
+        datasets:[{
+                label:'Stats',
+                data:[80,105,70,80,100,95],
+                backgroundColor:[
+                    'rgb(66, 134, 244,0.5)',
+                   
+                ]
+                /*dataPoints: [
+  { y: spd, label: "SPEED" },
+  { y: sdef, label: "SP. DEFENSE" },
+  { y: satk, label: "SP. ATTACK" },
+  { y: def, label: "DEFENSE" },
+  { y: atk, label: "ATTACK" },
+  { y: hp, label: "HP" }
+]*/
+        }]
+    },
+    options:{
+        scales:{
+            angleLines: {
+    display: false
+},
+            ticks: {
+    suggestedMin: 70,
+    suggestedMax: 110
+            
+        }}
+    }
+}); 
+
 
 
 
