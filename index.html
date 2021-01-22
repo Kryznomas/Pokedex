@@ -6,8 +6,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
-<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/localization/messages_es_AR.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.js"></script> -->
     <link rel="stylesheet" href="css/style.css">
     <title>Pokedex</title>
 </head>
@@ -18,12 +16,12 @@
         </header>
         <nav class="navbar navbar-light">
             <div class="container-fluid"> 
-                <form class="d-flex justify-content-between">
+                <form class="d-flex justify-content-between" id="formulario">
                         <input class="form-control mx-4 px-3" id="input-nombre" type="search" placeholder="Nombre Pokemon" aria-label="Search">
-                        <button class="btn btn-lg btn-danger px-3" id="button-nombre" type="submit">Buscar</button>
+                        <button class="btn btn-lg btn-danger px-3" id="button-nombre" type="button">Buscar</button>
                         <input class="form-control mx-4 px-3" id="input-numero" type="search" placeholder="Número Pokemon" aria-label="Search">
-                        <button class="btn btn-lg btn-danger px-3" id="button-numero"type="submit">Buscar</button>
-                        <button class="btn btn-lg btn-warning px-5 ms-4" id="button-random"type="submit">¡Sorpréndeme!</button>
+                        <button class="btn btn-lg btn-danger px-3" id="button-numero"type="button">Buscar</button>
+                        <button class="btn btn-lg btn-warning px-5 ms-4" id="button-random"type="button">¡Sorpréndeme!</button>
                 </form>
             </div>
         </nav>
@@ -34,14 +32,14 @@
             </div>
             <div class="col-md-6 px-5">
                 <div class="shadow-sm p-3 mb-5 bg-white rounded border border-3 border-primary">
-                    <h3 class="d-3 text-center" id="nombre-pokemon"></h3>
+                    <h3 class="d-3 text-center" id="nombre-pokemon">Nombre</h3>
             </div>
             <div class="d-flex justify-content-between">
-                <div class="col-7 shadow-sm py-3 px-5 mb-5 bg-white rounded border border-3 border-secondary text-center">
-                    Transformacion
+                <div class="col-5 shadow-sm py-3 px-5 mb-5 bg-white rounded border border-3 border-secondary text-center">
+                    Moveset
                 </div>
-                <div class="col-4 shadow-sm py-3 px-5 mb-5 bg-white rounded border border-3 border-secondary text-center">
-                    Numero
+                <div class="col-5 shadow-sm py-3 px-5 mb-5 bg-white rounded border border-3 border-secondary text-center">
+                    Evoluciones
                 </div>
             </div>
             <div class="shadow-sm p-3 mb-5 bg-white rounded border border-3 border-primary">
@@ -53,13 +51,15 @@
             </div>
         </div >
         </div>
-        <div class="row px-5 my-3">
-        <div class="col-md-12 shadow-sm p-3 mb-5 bg-white rounded border border-3 border-primary">
-            <p id="descripcion"></p>
+        <div class="container px-5 my-3">
+            <div class="row">
+        <div class="col-md-6 shadow-sm p-3 mb-5 bg-white rounded border border-3 border-primary">
+            <p id="descripcion">Debilidades y resistencias</p>
         </div>
-        <div class="col-md-12 shadow-sm p-3 mb-5 bg-white rounded border border-3 border-primary">
-            Stats
+        <div class="col-md-6 shadow-sm p-3 mb-5 bg-white rounded border border-3 border-primary">
+            Grafico Stats
         </div>
+    </div>
     </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
