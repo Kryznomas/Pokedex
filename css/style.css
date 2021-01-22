@@ -7,3 +7,8 @@ body {
     background-attachment: fixed;
 }
 
+.list-group-item {
+
+    border: none;
+    hyphens:none;
+}
