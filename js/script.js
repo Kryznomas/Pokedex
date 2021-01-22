@@ -96,6 +96,7 @@ $(document).ready(function () {
         nombrePokemon.text(a1["name"]);
         imgPokemon.attr("src", a1["sprites"]["other"]["official-artwork"]["front_default"]);
         tipoPokemon.text(a1['types']["0"]["type"]["name"]);
+        tipoPokemon.addClass(a1['types']["0"]["type"]["name"]);
         numeroPokemon.text(a1['id']);
         categoriaPokemon.text(a2['0']['genera']['5']['genus'])
         area1.text(a3[0][0]["location_area"].name)
