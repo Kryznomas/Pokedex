@@ -41,13 +41,22 @@ $(document).ready(function () {
             success: function (result) {}
             
             }); 
+        
+        var ajax4 = $.ajax({
+            method: "GET",
+            url: `https://pokeapi.co/api/v2/ability/${indicePokemon}`,
+            dataType: "json",
+            async: true,
+            success: function (result) {}
+            
+            }); 
 
-        $.when( ajax1 , ajax2, ajax3  ).done(function( a1, a2, a3 ) {
+        $.when( ajax1 , ajax2, ajax3, ajax4 ).done(function( a1, a2, a3, a4 ) {
             
             if (!primeraBusqueda){
                 a1 = a1[0]
             }
-            llenarCampos(a1,a2,a3);
+            llenarCampos(a1,a2,a3,a4);
             
         });
     };
@@ -77,15 +86,17 @@ $(document).ready(function () {
 
     });
 
-    function llenarCampos(a1,a2,a3) {
-        console.log(a1,a2,a3);
+    function llenarCampos(a1,a2,a3,a4) {
+        console.log(a1,a2,a3,a4);
         let idPokemon=$
         let imgPokemon = $('#img-pokemon');
         let nombrePokemon = $('#nombre-pokemon');
         let categoriaPokemon = $('#categoria');
         let numeroPokemon = $('#numero-pokemon');
         let tipoPokemon = $('#tipo');
-        let habilidadesPokemon = $('#habilidades');
+        let habilidadPokemon1 = $('#habilidad-1');
+        let habilidadPokemon2 = $('#habilidad-2');
+        let habilidadPokemon3 = $('#habilidad-3');
         let area1 = $('#area1');
         let area2 = $('#area2');
         let area3 = $('#area3');
@@ -98,7 +109,10 @@ $(document).ready(function () {
         tipoPokemon.text(a1['types']["0"]["type"]["name"]);
         tipoPokemon.addClass(a1['types']["0"]["type"]["name"]);
         numeroPokemon.text(a1['id']);
-        categoriaPokemon.text(a2['0']['genera']['5']['genus'])
+        categoriaPokemon.text(a2['0']['genera']['5']['genus']);
+        habilidadPokemon1.text(a1.abilities[0]['ability']['name']);
+        habilidadPokemon2.text(a1.abilities[1]['ability']['name']);
+        habilidadPokemon3.text(a1.abilities[2]['ability']['name']);
         area1.text(a3[0][0]["location_area"].name)
         area2.text(a3[0][1]["location_area"].name)
         area3.text(a3[0][2]["location_area"].name)
