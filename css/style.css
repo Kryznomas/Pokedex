@@ -38,3 +38,129 @@ ul li {
 ::placeholder {
     font-size: smaller;
 }
+
+.normal-type{
+    background-color:#A8A878 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+.psychic-type{
+    background-color:#F85888 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.grass-type{
+    background-color:#78C850 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.ground-type{
+    background-color:#E0C068 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.ice-type{
+    background-color:#98D8D8;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.poison-type{
+    background-color:#A040A0;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.fire-type{
+    background-color:#F08030;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.rock-type{
+    background-color:#B8A038 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.dragon-type{
+    background-color:#7038F8 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+    
+}
+
+.water-type{
+    background-color:#6890F0 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.bug-type{
+    background-color:#A8B820 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.dark-type{
+    background-color:#705848;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.fighting-type{
+    background-color:#C03028 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.ghost-type{
+    background-color:#705898 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.steel-type{
+    background-color:#B8B8D0 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.flying-type{
+    background-color:#A890F0 ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.electric-type{
+    background-color:#F8D030;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
+
+.fairy-type{
+    background-color:#EE99AC ;
+    color:white;
+    width: 150px;
+    display: inline-block;
+}
