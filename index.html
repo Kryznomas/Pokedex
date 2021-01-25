@@ -11,26 +11,37 @@
     <title>Pokedex</title>
 </head>
 <body>
-    <main class="container col-10 shadow-lg p-5 my-5 bg-white rounded ">
+    <main class="container-sm col-10 shadow-lg p-5 bg-white rounded">
         <!-- Header (Logo) -->
-        <header class="d-flex justify-content-md-center">
-            <img class="mx-auto" src="/assets/img/logo.png" alt="">
+        <header class="container d-flex justify-content-center align-items-center">
+            <img class="img-fluid" id="logo" src="/assets/img/logo.png" alt="">
         </header>
         <!-- Formularios  -->
-        <nav class="container shadow p-3 mb-5 bg-white rounded">
-            <div class="row d-flex flex-md-wrap justify-content-between"> 
-                <form class="d-flex justify-content-between" id="formulario">
+        <div class="container shadow-lg py-4 mb-5 bg-white rounded">
+            <div class="row justify-content-around"> 
                     <!-- Search Nombre -->
-                        <input class="form-control me-2" id="input-nombre" type="search" placeholder="Nombre Pokemon" aria-label="Search">
-                        <button class="btn btn-lg btn-danger px-3" id="button-nombre" type="button">Buscar</button>
-                    <!-- Search Numero -->
-                        <input class="form-control me-2" id="input-numero" type="search" placeholder="Número Pokemon" aria-label="Search">
-                        <button class="btn btn-lg btn-danger px-3 mx-2" id="button-numero"type="button">Buscar</button>
-                    <!-- Search Random -->
-                        <button class="btn btn-lg btn-warning px-4" id="button-random"type="button">¡Sorpréndeme!</button>
-                </form>
+                    <div class="col-md-4">
+                        <div class="row col-12">
+                            <input class="col form-control" id="input-nombre" type="search" placeholder="Nombre Pokemon" aria-label="Search">
+                            <button class="col ms-2 btn btn-danger shadow" id="button-nombre" type="button">Buscar</button>
+                        </div>
+                    </div>
+                        <!-- Search Numero -->
+                    <div class="col-md-4">
+                        <div class="row col-12">
+                            <input class="col form-control" id="input-numero" type="search" placeholder="Número Pokemon" aria-label="Search">
+                            <button class="col ms-2 btn btn-danger shadow" id="button-numero"type="button">Buscar</button>
+                        </div>
+                    </div>
+                        <!-- Search Random -->
+                    <div class="col-md-3 justify-content-center">
+                        <div class="row col-12">
+                        <button class="btn btn-warning text-center shadow" id="button-random"type="button">¡Sorpréndeme!</button>
+                        </div>
+                    </div>
+                
             </div>
-        </nav>
+        </div>
         <!-- -----------------Datos Bloque Central------- -->
         <div class="container-fluid shadow-lg">
             <div class="row justify-content-md-center p-4">
@@ -39,70 +50,70 @@
                     <img class="img-fluid p-5" id="img-pokemon" src=" " alt="">
                 </div>
                 <!-- --------------Datos Side------------ -->
-                <div class="col-md-6 px-5">
+                <aside class="col-md-6">
                     <!-- Nombre -->
-                    <div class="shadow-sm p-3 mb-3 bg-white rounded border border-3 border-primary text-capitalize">
-                        <h3 class="d-3 text-center" id="nombre-pokemon"></h3>
+                    <div class="shadow py-3 mb-3 bg-primary rounded text-capitalize">
+                        <em class="d-4">Nombre</em>
+                        <p class="fs-2 text-center" id="nombre-pokemon"></p>
                     </div>
                     <div class="d-flex justify-content-between">
                     <!-- Categoría -->
-                        <div class="col-8 shadow-sm py-3 px-5 mb-3 bg-white rounded border border-3 border-primary text-center">
-                            <p id="categoria" class="text-capitalize"></p>
+                        <div class="col-8 shadow py-2 mb-3 bg-primary rounded">
+                            <em class="d-4">Categoría</em>
+                            <p class="text-center fs-3 text-capitalize" id="categoria"></p>
                         </div>
                         <!-- Numero -->
-                        <div class="col-3 shadow-sm py-3 px-5 mb-3 bg-white rounded border border-3 border-primary text-center">
-                            <p id="numero-pokemon"></p>
+                        <div class="col-3 shadow py-2 mb-3 bg-primary rounded">
+                            <em class="d-4">N°</em>
+                            <p class="text-center fs-3" id="numero-pokemon"></p>
                         </div>
                     </div>
                     <!-- Tipo -->
-                    <div class="shadow-sm p-3 mb-3 bg-white rounded border border-3 border-primary">
-                        <p id="tipo" class="text-capitalize"></p>
+                    <div class="shadow p-2 mb-3 bg-primary rounded text-capitalize">
+                        <em class="d-4">Tipo</em>
+                        <p id="tipo" class="text-center fs-3 text-capitalize"></p>
                     </div>
-                    <div class="row d-flex flex-row justify-content-between">
+                    <!-- habitat -->
+                    <div class="shadow-sm p-2 mb-3 bg-primary rounded text-capitalize">
+                        <em class="d-4">Habitat</em>
+                        <p id="habitat" class="text-center fs-3 text-capitalize"></p>
+                    </div>
+                    
                     <!-- Habilidades -->
-                        <div class="col-md-5 shadow-sm p-3 mb-3 ps-3 bg-white rounded border border-3 border-primary">
-                            <ul class="list-group">
-                                <li class="list-group-item" id="habilidad-1"></li>
-                                <li class="list-group-item" id="habilidad-2"></li>
-                                <li class="list-group-item" id="habilidad-3"></li>
-                            </ul>
+                    <div class="shadow-sm p-2 mb-3 bg-primary rounded text-capitalize">
+                        <em class="d-4">Habilidades</em>
+                        <ul class="list-group">
+                            <li class="list-group-item bg-primary text-center fs-4 text-capitalize" id="habilidad-1"></li>
+                            <li class="list-group-item bg-primary text-center fs-4 text-capitalize" id="habilidad-2"></li>
+                            <li class="list-group-item bg-primary text-center fs-4 text-capitalize" id="habilidad-3"></li>
+                        </ul>
+                    </div>
+                </aside>
+                <div class="container px-4 py-3">
+                    <div class="row d-flow justify-content-between">
+                        <!-- Grafico Stats -->
+                        <div class="col-md-5 shadow mb-5 bg-white rounded" id="grafo">
+                            <p id="stats"></p><canvas id="myChart" ></canvas>
                         </div>
-                        <!-- Areas donde se encuentran -->
-                        <div class="col-md-5 shadow-sm p-3 mb-3 pe-3 bg-white rounded border border-3 border-primary">
-                            <ul class="list-group">
-                                <li class="list-group-item" id="area1"></li>
-                                <li class="list-group-item" id="area2"></li>
-                                <li class="list-group-item" id="area3"></li>
-                            </ul>
+                        <!-- Descripcion -->
+                        <div class="col-md-6 shadow mb-5 bg-white rounded">
+                            <p id="descripcion"></p>
                         </div>
                     </div>
-                </div>
-
-            </div>
-        </div >
-        <!-- ---------------------Datos bloque inferior-------------------- -->
-        <div class="container-flow p-5 my-5 shadow-lg">
-            <div class="row d-flow justify-content-around">
-                <!-- Grafico Stats -->
-                <div class="col-md-6 shadow-sm p-3 mb-5 bg-white rounded border border-3 border-primary">
-                    <p id="stats">Grafico Stats</p><p id="descripcion">Grafico Stats</p><canvas id="myChart" width="300" height="300"></canvas>
-                </div>
-                <!-- Descripcion -->
-                <div class="col-md-6 shadow-sm p-3 mb-5 bg-white rounded border border-3 border-primary">
-                    <p id="descripcion">Descripcion</p>
+                    <!-- Debilidades y Resistencias -->
+                    <div class="col shadow mb-3 bg-white rounded border border-3 border-primary">
+                        <p id="debilidades">Debilidades/Resistencias</p>
+                    </div>
+                    <!-- Movimientos -->
+                    <div class="col shadow mb-3 bg-white rounded border border-3 border-primary">
+                        Movimientos (desplegable)
+                    </div>
                 </div>
             </div>
-            <div class="container-flow">
-            <!-- Debilidades y Resistencias -->
-            <div class="col-md-12 shadow-sm p-3 mb-3 bg-white rounded border border-3 border-primary text-wrap">
-                <p id="debilidades">Debilidades/Resistencias</p>
-            </div>
-            <!-- Movimientos -->
-            <div class="col-md-12 shadow-sm p-3 mb-3 bg-white rounded border border-3 border-primary">
-                Movimientos (desplegable)
-            </div>
+                    <!-- ---------------------Datos bloque inferior-------------------- -->
+            
         </div>
-        </div>
+        
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     

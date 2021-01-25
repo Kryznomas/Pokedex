@@ -18,8 +18,6 @@ $(document).ready(function () {
                 }
             
             });  
-        
-            
         }
 
         else {ajax1 = primeraBusqueda}; 
@@ -44,7 +42,7 @@ $(document).ready(function () {
         
         var ajax4 = $.ajax({
             method: "GET",
-            url: `https://pokeapi.co/api/v2/ability/${indicePokemon}`,
+            url: `https://pokeapi.co/api/v2/pokemon-form/${indicePokemon}`,
             dataType: "json",
             async: true,
             success: function (result) {}
@@ -82,7 +80,7 @@ $(document).ready(function () {
 
     $(buttonRandom).click(function () {
         
-        busquedaId(Math.floor(Math.random()* (+1 - +150) + +150));  
+        busquedaId(Math.floor(Math.random()* (+1 - +880) + +880));  
 
     });
 
@@ -97,9 +95,7 @@ $(document).ready(function () {
         let habilidadPokemon1 = $('#habilidad-1');
         let habilidadPokemon2 = $('#habilidad-2');
         let habilidadPokemon3 = $('#habilidad-3');
-        let area1 = $('#area1');
-        let area2 = $('#area2');
-        let area3 = $('#area3');
+        let habitatPokemon1 = $('#habitat');
         let descripcionPokemon = $('#descripcion');
         let debilidadesPokemon = $('#debilidades');
 
@@ -113,10 +109,8 @@ $(document).ready(function () {
         habilidadPokemon1.text(a1.abilities[0]['ability']['name']);
         habilidadPokemon2.text(a1.abilities[1]['ability']['name']);
         habilidadPokemon3.text(a1.abilities[2]['ability']['name']);
-        area1.text(a3[0][0]["location_area"].name)
-        area2.text(a3[0][1]["location_area"].name)
-        area3.text(a3[0][2]["location_area"].name)
-        descripcionPokemon.text(a2[0]["flavor_text_entries"][1]["flavor_text"])
+        habitatPokemon1.text(a2[0].habitat.name)
+        descripcionPokemon.text(a2[0]["flavor_text_entries"][0]["flavor_text"])
     }
 
 });
@@ -132,9 +126,9 @@ var myChart= new Chart(ctx,{
                 data:[80,105,70,80,100,95],
                 backgroundColor:[
                     'rgb(66, 134, 244,0.5)',
-                   
                 ]
-                /*dataPoints: [
+                
+/*dataPoints: [
   { y: spd, label: "SPEED" },
   { y: sdef, label: "SP. DEFENSE" },
   { y: satk, label: "SP. ATTACK" },

@@ -5,10 +5,36 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    
 }
 
 .list-group-item {
 
     border: none;
-    hyphens:none;
+
+
+}
+
+#grafo {
+    max-width: 60%;
+
+}
+
+em {
+    color:white;
+    margin-left: 1vw;
+}
+
+aside p {
+
+    color:white;
+}
+
+ul li {
+
+    color: white;
+}
+
+::placeholder {
+    font-size: smaller;
 }
