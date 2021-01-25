@@ -91,7 +91,8 @@ $(document).ready(function () {
         let nombrePokemon = $('#nombre-pokemon');
         let categoriaPokemon = $('#categoria');
         let numeroPokemon = $('#numero-pokemon');
-        let tipoPokemon = $('#tipo');
+        let tipoPokemon1 = $('#tipo1');
+        let tipoPokemon2 = $('#tipo2');
         let habilidadPokemon1 = $('#habilidad-1');
         let habilidadPokemon2 = $('#habilidad-2');
         let habilidadPokemon3 = $('#habilidad-3');
@@ -102,8 +103,10 @@ $(document).ready(function () {
 
         nombrePokemon.text(a1["name"]);
         imgPokemon.attr("src", a1["sprites"]["other"]["official-artwork"]["front_default"]);
-        tipoPokemon.text(a1['types']["0"]["type"]["name"]);
-        tipoPokemon.addClass(a1['types']["0"]["type"]["name"]);
+        tipoPokemon1.text(a1['0']['types']["0"]["type"]["name"]);
+        tipoPokemon1.addClass((a1['0']['types']["0"]["type"]["name"])+"-type");
+        tipoPokemon2.text(a1['0']['types']["1"]["type"]["name"]);
+        tipoPokemon2.addClass((a1['0']['types']["1"]["type"]["name"])+"-type");
         numeroPokemon.text(a1['id']);
         categoriaPokemon.text(a2['0']['genera']['5']['genus']);
         habilidadPokemon1.text(a1.abilities[0]['ability']['name']);
