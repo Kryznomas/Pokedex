@@ -162,6 +162,9 @@ $(document).ready(function () {
         tipoPokemon2.text("");
         tipoPokemon2.attr("class"," ");
         habitatPokemon1.text("");
+        nombrePokemon.text("")
+        numeroPokemon.text("")
+        categoriaPokemon.text("")
 
 
         hp.text(a1[0].stats[0]["base_stat"]);
