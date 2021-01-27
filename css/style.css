@@ -39,6 +39,23 @@ ul li {
     font-size: smaller;
 }
 
+.grafico {
+
+    width: 80%;
+    
+    
+}
+
+td {
+
+    text-align:center;
+}
+
+th {
+
+    text-align:center;
+}
+
 .normal-type{
     background-color:#A8A878 ;
     color:white;

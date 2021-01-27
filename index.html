@@ -7,6 +7,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Pokedex</title>
 </head>
@@ -44,77 +46,83 @@
         </div>
         <!-- -----------------Datos Bloque Central------- -->
         <div class="container-fluid shadow-lg">
-            <div class="row justify-content-md-center p-4">
+            <div class="row align-items-center p-4">
                 <!---------------- Imagen------------ -->
                 <div class="col-md-6">
-                    <img class="img-fluid p-5" id="img-pokemon" src=" " alt="">
+                    <img class="img-fluid p-5" id="img-pokemon" src="assets/img/bulbasaur-test.png">
                 </div>
                 <!-- --------------Datos Side------------ -->
                 <aside class="col-md-6">
                     <!-- Nombre -->
                     <div class="shadow py-3 mb-3 bg-primary rounded text-capitalize">
                         <em class="d-4">Nombre</em>
-                        <p class="fs-2 text-center" id="nombre-pokemon"></p>
+                        <p class="fs-2 text-center" id="nombre-pokemon">Bulbasaur</p>
                     </div>
                     <div class="d-flex justify-content-between">
                     <!-- Categoría -->
                         <div class="col-8 shadow py-2 mb-3 bg-primary rounded">
                             <em class="d-4">Categoría</em>
-                            <p class="text-center fs-4 text-capitalize" id="categoria"></p>
+                            <p class="text-center fs-4 text-capitalize" id="categoria">Pokemon Semilla</p>
                         </div>
                         <!-- Numero -->
                         <div class="col-3 shadow py-2 mb-3 bg-primary rounded">
                             <em class="d-4">N°</em>
-                            <p class="text-center fs-4" id="numero-pokemon"></p>
+                            <p class="text-center fs-4" id="numero-pokemon">1</p>
                         </div>
                     </div>
                     <!-- Tipo -->
-                    <div class="shadow p-2 mb-3 bg-primary text-center rounded text-capitalize">
-                        <em class="d-4">Tipo</em>
-                        <p id="tipo1" class="text-capitalize border rounded"></p><p id="tipo2" class="text-capitalize border rounded"></p>
+                    <div class="shadow p-2 mb-3 bg-primary rounded text-capitalize">
+                        <em class="d-4">Tipo</em><br>
+                        <div class="d-flex justify-content-around text-center">
+                        <p id="tipo1" class="text-capitalize border rounded">Grass</p>
+                        <p id="tipo2" class="text-capitalize border rounded">Poison</p>
+                        </div>
                     </div>
-                    <!-- Habilidades -->
-                    <div class="shadow-sm p-2 mb-3 bg-primary rounded text-capitalize">
-                        <em class="d-4">Habilidades</em>
-                        <ul class="list-group">
-                            <li class="list-group-item bg-primary text-center fs-4 text-capitalize" id="habilidad-1"></li>
-                            <li class="list-group-item bg-primary text-center fs-4 text-capitalize" id="habilidad-2"></li>
-                            <li class="list-group-item bg-primary text-center fs-4 text-capitalize" id="habilidad-3"></li>
-                        </ul>
-                    </div>
+
                     <!-- habitat -->
                     <div class="shadow-sm p-2 mb-3 bg-primary rounded text-capitalize">
                         <em class="d-4">Habitat</em>
-                        <p id="habitat" class="text-center fs-4 text-capitalize"></p>
+                        <p id="habitat" class="text-center fs-4 text-capitalize">Grassland</p>
+                    </div>
+                    <!-- Descripcion -->
+                    <div class="shadow-sm p-2 mb-3 bg-primary rounded">
+                        <em class="d-4">Descripción</em>
+                        <p id="descripcion" class="text-justify fs-4 p-4">Una rara semilla le fue plantada en el lomo al nacer. La planta brota y crece con este Pokemon.</p>
                     </div>
                 </aside>
                 <!-- ---------------------Datos bloque inferior-------------------- -->
-                <div class="container px-4 py-3">
-                    <div class="row d-flow justify-content-between">
-                        <!-- Grafico Stats -->
-                        <div class="col-md-5 shadow mb-5 bg-white rounded" id="grafo">
-                            <p id="stats"></p><canvas id="myChart" ></canvas>
+                <div class="container-flex">
+                    <div class="column">
+                        <div class="col-md-12 shadow mb-5 bg-white rounded border border-3 border-primary" id="grafico">
+                            <h3 class="px-4 py-3" >Stats</h3>
+                            <div class="p-3 table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th>HP</th>
+                                        <th>Ataque</th>
+                                        <th>Defensa</th>           
+                                        <th>SP Ataque</th>
+                                        <th>SP Defensa</th>
+                                        <th>Velocidad</th> 
+                                    </tr>
+                                    <tr>
+                                        <td><p id="hp"></p></td>
+                                        <td><p id="ataque"></p></td>
+                                        <td><p id="defensa"></p></td>
+                                        <td><p id="ataqueEspecial"></p></td>
+                                        <td><p id="defensaEspecial"></p></td>
+                                        <td><p id="velocidad"></p></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="grafico" id="chartContainer" style="height: 300px; width: 100%;"></div>
                         </div>
-                        <!-- Descripcion -->
-                        <div class="col-md-6 shadow mb-5 bg-white rounded">
-                            <p id="descripcion"></p>
-                        </div>
-                    </div>
-                    <!-- Debilidades y Resistencias -->
-                    <div class="col shadow mb-3 bg-white rounded border border-3 border-primary">
-                        <p id="debilidades">Debilidades/Resistencias</p>
-                    </div>
-                    <!-- Movimientos -->
-                    <div class="col shadow mb-3 bg-white rounded border border-3 border-primary">
-                        Movimientos (desplegable)
                     </div>
                 </div>
             </div>
         </div>
-        
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    
     <script src="/js/script.js"></script>
 </body>
 </html>

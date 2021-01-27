@@ -1,158 +1,213 @@
 $(document).ready(function () {
 
-    let buttonNombre = $('#button-nombre');
-    let buttonRandom = $('#button-random');
-    let buttonNumero =$('#button-numero');
+    var buttonNombre = $('#button-nombre');
+    var buttonRandom = $('#button-random');
+    var buttonNumero = $('#button-numero');
 
-    function busquedaId(indicePokemon, primeraBusqueda){
-
-        var ajax1;
-        if (!primeraBusqueda){
-            
-            ajax1 = $.ajax({
-                method: "GET",
-                url: `https://pokeapi.co/api/v2/pokemon/${indicePokemon}`,
-                dataType: "json",
-                async: true,
-                success: function (result) {
-                }
-            
-            });  
-        }
-
-        else {ajax1 = primeraBusqueda}; 
-
-        var ajax2 = $.ajax({
+    $(buttonNombre).click(function () {
+        console.log();
+        var inputNombre = $('#input-nombre').val();
+        
+        let ajax1 = $.ajax({
             method: "GET",
-            url: `https://pokeapi.co/api/v2/pokemon-species/${indicePokemon}`,
+            url: `https://pokeapi.co/api/v2/pokemon/${inputNombre}`,
+            success: function (data) {
+                llenarCampos(data);
+                return data;
+            },
+            dataType: "json",
+            async: true,
+            success: function (result) {}
+        
+        });  
+
+        let ajax2 = $.ajax({
+            method: "GET",
+            url: `https://pokeapi.co/api/v2/pokemon-species/${inputNombre}`,
             dataType: "json",
             async: true,
             success: function (result) {}
             
             });
 
-        var ajax3 = $.ajax({
-            method: "GET",
-            url: `https://pokeapi.co/api/v2/pokemon/${indicePokemon}/encounters`,
-            dataType: "json",
-            async: true,
-            success: function (result) {}
-            
-            }); 
-        
-        var ajax4 = $.ajax({
-            method: "GET",
-            url: `https://pokeapi.co/api/v2/pokemon-form/${indicePokemon}`,
-            dataType: "json",
-            async: true,
-            success: function (result) {}
-            
-            }); 
 
-        $.when( ajax1 , ajax2, ajax3, ajax4 ).done(function( a1, a2, a3, a4 ) {
-            
-            if (!primeraBusqueda){
-                a1 = a1[0]
-            }
-            llenarCampos(a1,a2,a3,a4);
-            
-        });
-    };
+
+        $.when( ajax1 , ajax2 ).done(function( a1, a2 ) {
+
+        var data = a1 + a2; 
+        
+        llenarCampos(a1,a2);
+        grafico(a1);
+
+        $('#input-nombre')[0].value = ""
+       
+    });
+        
+    }); 
 
     $(buttonNumero).click(function () {
-        busquedaId($('#input-numero').val(), false);
-
-    });
-
-    $(buttonNombre).click(function () {
-        var inputNombre = $('#input-nombre').val();
+        var inputNumero = $('#input-numero').val();
         
         var ajax1 = $.ajax({
             method: "GET",
-            url: `https://pokeapi.co/api/v2/pokemon/${inputNombre}`,
+            url: `https://pokeapi.co/api/v2/pokemon/${inputNumero}`,
+            success: function (data) {
+                llenarCampos(data);
+                return data;
+            },
             dataType: "json",
             async: true,
-            success: function (result) {
-                busquedaId(result.id, result);
-            }
-        });    
-});  
-
-    $(buttonRandom).click(function () {
+            success: function (result) {}
         
-        busquedaId(Math.floor(Math.random()* (+1 - +880) + +880));  
+        });        
 
+        var ajax2 = $.ajax({
+            method: "GET",
+            url: `https://pokeapi.co/api/v2/pokemon-species/${inputNumero}`,
+            dataType: "json",
+            async: true,
+            success: function (result) {}
+
+            });
+
+        $.when( ajax1 , ajax2 ).done(function( a1, a2) {
+
+        var data = a1 + a2; 
+        
+        llenarCampos(a1,a2);
+        grafico(a1);
+        
+        $('#input-numero')[0].value = ""
+    }); 
     });
 
-    function llenarCampos(a1,a2,a3,a4) {
-        console.log(a1,a2,a3,a4);
-        let idPokemon=$
-        let imgPokemon = $('#img-pokemon');
-        let nombrePokemon = $('#nombre-pokemon');
-        let categoriaPokemon = $('#categoria');
-        let numeroPokemon = $('#numero-pokemon');
-        let tipoPokemon1 = $('#tipo1');
-        let tipoPokemon2 = $('#tipo2');
-        let habilidadPokemon1 = $('#habilidad-1');
-        let habilidadPokemon2 = $('#habilidad-2');
-        let habilidadPokemon3 = $('#habilidad-3');
-        let habitatPokemon1 = $('#habitat');
-        let descripcionPokemon = $('#descripcion');
-        let debilidadesPokemon = $('#debilidades');
+
+    $(buttonRandom).click(function () {
+        var randomNumber = Math.floor(Math.random()* (+1 - +880) + +880);  
+
+        
+        var ajax1 = $.ajax({
+            method: "GET",
+            url: `https://pokeapi.co/api/v2/pokemon/${randomNumber}`,
+            success: function (data) {
+                llenarCampos(data);
+                return data;
+            },
+            dataType: "json",
+            async: true,
+            success: function (result) {}
+        
+        });        
+
+        var ajax2 = $.ajax({
+            method: "GET",
+            url: `https://pokeapi.co/api/v2/pokemon-species/${randomNumber}`,
+            dataType: "json",
+            async: true,
+            success: function (result) {}
+
+            });
 
 
-        nombrePokemon.text(a1["name"]);
-        imgPokemon.attr("src", a1["sprites"]["other"]["official-artwork"]["front_default"]);
-        tipoPokemon1.text(a1['0']['types']["0"]["type"]["name"]);
-        tipoPokemon1.addClass((a1['0']['types']["0"]["type"]["name"])+"-type");
-        tipoPokemon2.text(a1['0']['types']["1"]["type"]["name"]);
-        tipoPokemon2.addClass((a1['0']['types']["1"]["type"]["name"])+"-type");
-        numeroPokemon.text(a1['id']);
-        categoriaPokemon.text(a2['0']['genera']['5']['genus']);
-        habilidadPokemon1.text(a1.abilities[0]['ability']['name']);
-        habilidadPokemon2.text(a1.abilities[1]['ability']['name']);
-        habilidadPokemon3.text(a1.abilities[2]['ability']['name']);
-        habitatPokemon1.text(a2[0].habitat.name)
-        descripcionPokemon.text(a2[0]["flavor_text_entries"][0]["flavor_text"])
-    }
+        $.when( ajax1 , ajax2).done(function( a1, a2) {
 
-});
+        var data = a1 + a2; 
+        
+        llenarCampos(a1,a2);
+        grafico(a1);
+    });
+    
+    })
 
-var ctx= document.getElementById("myChart").getContext("2d")
-
-var myChart= new Chart(ctx,{
-    type:"radar",
-    data:{
-        labels:['SP DEFENSE', 'SPEED', 'DEFENSE', 'SP ATTACK', 'ATTACK', 'HP'],
-        datasets:[{
-                label:'Stats',
-                data:[80,105,70,80,100,95],
-                backgroundColor:[
-                    'rgb(66, 134, 244,0.5)',
-                ]
+    function grafico(a1) {
+        var chart = new CanvasJS.Chart("chartContainer",{
+            theme: "light1",
+            animationEnabled: true,
+            data: [{
                 
-/*dataPoints: [
-  { y: spd, label: "SPEED" },
-  { y: sdef, label: "SP. DEFENSE" },
-  { y: satk, label: "SP. ATTACK" },
-  { y: def, label: "DEFENSE" },
-  { y: atk, label: "ATTACK" },
-  { y: hp, label: "HP" }
-]*/
-        }]
-    },
-    options:{
-        scales:{
-            angleLines: {
-    display: false
-},
-            ticks: {
-    suggestedMin: 70,
-    suggestedMax: 110
-            
-        }}
+                type: "bar",
+                dataPoints: [
+                    { label: "HP",  y: a1[0].stats[0]["base_stat"] },
+                    { label: "Ataque", y: a1[0].stats[1]["base_stat"]},
+                    { label: "Defensa", y: a1[0].stats[2]["base_stat"]},
+                    { label: "Ataque SP",  y: a1[0].stats[3]["base_stat"]},
+                    { label: "Defensa SP",  y: a1[0].stats[4]["base_stat"]},
+                    { label: "Velocidad",  y: a1[0].stats[5]["base_stat"]}
+                ]
+            }],
+        
+        });
+            chart.render();
     }
-}); 
+
+    function llenarCampos(a1,a2) {
+                
+        var imgPokemon = $('#img-pokemon');
+        var nombrePokemon = $('#nombre-pokemon');
+        var categoriaPokemon = $('#categoria');
+        var numeroPokemon = $('#numero-pokemon');
+        var tipoPokemon1 = $('#tipo1');
+        var tipoPokemon2 = $('#tipo2');
+        var habitatPokemon1 = $('#habitat');
+        var descripcionPokemon = $('#descripcion');
+        var hp = $('#hp')
+        var ataque = $('#ataque')
+        var defensa = $('#defensa')
+        var ataqueEspecial = $('#ataqueEspecial')
+        var defensaEspecial = $('#defensaEspecial')
+        var velocidad = $('#velocidad')
+        
+        /* Valores por defecto */
+        tipoPokemon1.text("");
+        tipoPokemon2.text("");
+        tipoPokemon2.attr("class"," ");
+        habitatPokemon1.text("");
+
+
+        hp.text(a1[0].stats[0]["base_stat"]);
+        ataque.text(a1[0].stats[1]["base_stat"]);
+        defensa.text(a1[0].stats[2]["base_stat"]);
+        ataqueEspecial.text(a1[0].stats[3]["base_stat"]);
+        defensaEspecial.text(a1[0].stats[4]["base_stat"]);
+        velocidad.text(a1[0].stats[5]["base_stat"]);
+        nombrePokemon.text(a1[0]["name"]);
+        imgPokemon.attr("src", a1[0]["sprites"]["other"]["official-artwork"]["front_default"]);
+        tipoPokemon1.text(a1[0]['types']["0"]["type"]["name"]);
+        tipoPokemon1.addClass((a1[0]['types']["0"]["type"]["name"])+"-type");
+        numeroPokemon.text(a1[0]['id']);
+        categoriaPokemon.text(a2['0']['genera']['5']['genus']);
+        
+        const descripcion = a2[0]["flavor_text_entries"].filter(elemento => {
+
+            return elemento.language.name == "es";
+            
+        })
+        
+        descripcionPokemon.text(descripcion[0]["flavor_text"]);
+
+
+        if (a2[0]["habitat"]!= null) {
+        habitatPokemon1.text(a2[0]["habitat"]["name"]);
+        
+        }
+
+        else {
+            habitatPokemon1.text("Desconocido")
+        }
+
+        if(a1[0]['types'].length > 1){
+            tipoPokemon2.text(a1[0]['types']["1"]["type"]["name"]);
+            tipoPokemon2.addClass((a1[0]['types']["1"]["type"]["name"])+"-type");
+        }
+ 
+    } 
+
+    
+    })
+    
+
+
+
 
 
 
